@@ -125,6 +125,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+
+
+# Cloudinary config
+cloudinary.config(
+  cloud_name = "inst-clone", 
+  api_key = "825596169442489", 
+  api_secret = "fkdCFmaWX2woloWEpVs5STDqLP4" 
+)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
