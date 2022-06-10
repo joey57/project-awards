@@ -1,0 +1,70 @@
+{% load django_bootstrap5 %}
+{% load static %}
+ <!-- Navigation bar -->
+ <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid" style="padding: 0">
+    <div class="" id="header">
+      <span class="menu" onclick="openNav()">&#9776; MENU</span>
+    </div>
+    <a class="nav-logo" href=" "><img class="rounded-circle" src="/static/photos/favicon.png" alt="" height="50px" width="50px"></a>
+    <div class="nav-brand">
+   <h3><a href=" " style="text-decoration: none;"><span class="P">Pr</span><span class="o">oj</span><span class="e">ec</span><span class="t">t</span><span class="Hub">Awards</span></h3>
+  </div>
+
+    <div class="disp">
+      <form class="search d-flex" role="search" action=" ">
+        <input
+          class="text-center form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" />
+      </form>
+    </div>
+
+    <div class="prof collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item drop dropdown">
+          <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="img-circle" src=" " alt="" width="40px" height="40px" />
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item carta pb-3" href=" ">Profile</a>
+            </li>
+           
+            <li>
+              <a class="dropdown-item carta pb-3" href=" ">Logout</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item drop dropdown">
+          <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-outline-info" width="40px" height="40px" />Get APIs</button>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item carta pb-3" href=" ">Profile-List</a>
+            </li>
+           
+            <li>
+              <a class="dropdown-item carta pb-3" href=" ">Projects-List</a>
+            </li>
+          </ul>
+        </li>
+      
+      </ul>
+    </div>
+    
+    
+    <div class="regi">
+      <a class="btn btn-outline-info" href=" ">Get APIs</a>
+    </div>      
+    <div class="regi">
+      <a class="carta nav-item reg" style="text-decoration: none;" href=" ">REGISTER</a>
+    </div>
+    <div class="site">
+      <a class="carta nav-item reg" style="text-decoration: none; background-color: #28bdd1" href= " ">POST PROJECT</a>
+    </div>
+    
+  </div>
+</nav>
