@@ -1,5 +1,28 @@
 {% load django_bootstrap5 %}
 {% load static %}
+
+<div id="mySidenav" class="sidenav" style="background-color: #aeebf0">
+  <a style="background-color: #aeebf0" href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+  <img src="/static/photos/left-arrow.png" alt="" height="40px" width="40px"></a>
+    
+  {% if user.is_authenticated %}
+  <a href="{% url 'index' %}" style="text-decoration: none;">Home</a>
+  <a href=" " style="text-decoration: none;">Post Project</a>
+  <a href="{% url 'profile' %}" style="text-decoration: none;">Profile</a>
+  <a href=" " style="text-decoration: none;">About Us</a>
+  <a class="text-muted" href="{% url 'logout' %}" style="text-decoration: none;">Logout
+    <span style="margin-left: 110px"><i class="fas fa-sign-out-alt"></i></span>
+  </a>
+  {% else %}
+  <a href="{% url 'index' %}" style="text-decoration: none;">Home</a>
+  <a href="{% url 'login' %}" style="text-decoration: none;">Login</a>
+  <a href="/register" style="text-decoration: none;">Register</a>
+  <a href=" " style="text-decoration: none;">Post Project</a>
+  <a href=" " style="text-decoration: none;">About Us</a>
+  {% endif %}
+</div>
+
+<div>
  <!-- Navigation bar -->
  <nav class="navbar navbar-expand-lg">
   <div class="container-fluid" style="padding: 0">
@@ -10,7 +33,7 @@
     <div class="nav-brand">
    <h3><a href=" " style="text-decoration: none;"><span class="P">Pr</span><span class="o">oj</span><span class="e">ec</span><span class="t">t</span><span class="Hub">Awards</span></h3>
   </div>
-
+  {% if user.is_authenticated %}
     <div class="disp">
       <form class="search d-flex" role="search" action=" ">
         <input
@@ -28,7 +51,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item carta pb-3" href=" ">Profile</a>
+              <a class="dropdown-item carta pb-3" href="{% url 'profile' %} ">Profile</a>
             </li>
            
             <li>
@@ -54,6 +77,7 @@
       
       </ul>
     </div>
+    {% else %}
     
     
     <div class="regi">
@@ -65,6 +89,8 @@
     <div class="site">
       <a class="carta nav-item reg" style="text-decoration: none; background-color: #28bdd1" href= " ">POST PROJECT</a>
     </div>
+    {% endif %}
     
   </div>
 </nav>
+</div>
