@@ -8,7 +8,7 @@
   {% if user.is_authenticated %}
   <a href="{% url 'index' %}" style="text-decoration: none;">Home</a>
   <a href=" " style="text-decoration: none;">Post Project</a>
-  <a href="{% url 'profile' %}" style="text-decoration: none;">Profile</a>
+  <a href="{% url 'profile' username=user %}" style="text-decoration: none;">Profile</a>
   <a href=" " style="text-decoration: none;">About Us</a>
   <a class="text-muted" href="{% url 'logout' %}" style="text-decoration: none;">Logout
     <span style="margin-left: 110px"><i class="fas fa-sign-out-alt"></i></span>
@@ -51,7 +51,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item carta pb-3" href="{% url 'profile' %} ">Profile</a>
+              <a class="dropdown-item carta pb-3" href="{% url 'profile' username=user %} ">Profile</a>
             </li>
            
             <li>
