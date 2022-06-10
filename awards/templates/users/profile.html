@@ -1,26 +1,70 @@
-{% extends 'base.html' %} 
-{% load crispy_forms_tags %} 
-{% block content %} 
-{% include 'navbar.html' %}
-  <div class="container">
-    <div class="media">
-      <img class="rounded-circle account-img" src="{{user.profile.image.url}}">
-      <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{user.email}}</p>
+{%extends 'base.html'%} {% load static %} {% block content %}
+<header class="mb-5">
+  {% for profile in profile %}
+  <div class="container-fluid cont">
+    <!-- Displaying user profile   -->
+    <div class="card profile" style="background-color: #b3d8f1; width: 40rem;">
+      <div class="bio-profile-image">
+        <a href="">
+          <img class="img-circle profile_img" src="{{ profile.image.url }}" alt="{{ user.username }}" />
+        </a>
+      </div>
+      <div class="details mt-3">
+        <a class="profile-name" href="/update_profile/{{ user.username }}">
+          <h5 class="heading-medium">{{ profile.user.username }}</h5>
+        </a>
+        <span style="padding-left: 10px"><a class="name" href="/update_profile/{{ user.username }}"><i
+              class="fas fa-pen"></i></a></span>
+        <br />
+      </div>
+      <div class="bio">
+        <p style="font-size: large;">
+          <span><strong>Name:</strong>
+            <em class="name" style="cursor: pointer">{{ profile.user.profile.name }}</em></span>
+          <br /><span><strong>Email: </strong><em>{{ profile.user.profile.email }}</em></span>
+          <br /><span class="bio-text"><strong>Bio: </strong><em>{{ profile.user.profile.bio }}</em></span>
+          <br />
+        </p>
+        
       </div>
     </div>
-
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Profile Info</legend>
-          {{ u_form | crispy }}
-          {{ p_form | crispy }}
-      </fieldset>
-      <div class="from-group">
-          <button class="btn btn-outline-info" type="submit">Update</button>
-      </div>
-  </form>
+    <!-- End of profile section -->
   </div>
-{% endblock content %}   
+  {% endfor %}
+  <!-- End of container -->
+</header>
+<main>
+  <div class="container">
+    <div class="text-center mt-5 mb-4">
+      <h3 style="color: rgb(46, 154, 187); font-weight: bolder;">Posted Projects</h3>
+    </div>
+    <hr>
+    <div class="row mt-5">
+  
+      <div class="col-md-4">
+        <div class="card p-3 mb-5" style="background-color: #b3d8f1;">
+          <div class="card__image">
+            <a href=" "><img src=" " alt="image" style="width: 100%; height: 250px" class="image"/></a>
+          </div>
+          <div class="cardbody">
+            <div class="mt-2">
+              <a href="#"></a>
+
+              <time> </time>
+            </div>
+            <article class="card__article">
+              <h3><a class="dance mb-3" target="_blank" href=" "> </a></h3>
+              <div class="mt-4">
+                <a class="" href=" " target="_blank"><button class="hov btn btn-outline-dark btn-sm"><i
+                      class="fas fa-share"> Share</i></button></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <hr />
+  </div>
+</main>
+{% endblock %}  
