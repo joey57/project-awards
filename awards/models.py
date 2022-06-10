@@ -13,7 +13,12 @@ class Profile(models.Model):
   def __str__(self):
     return f'{self.user.username} Profile'
 
-        
+  def save_profile(self):
+    self.save() 
+
+  def delete_profile(self):
+    self.delete()   
+       
   @classmethod
   def update_profile(cls,id,profile_pic,name,bio):
         cls.objects.filter(id=id).update(profile_pic=profile_pic,name=name,bio=bio)   
