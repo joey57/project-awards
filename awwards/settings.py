@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'awards',
     'django_bootstrap5',
     'cloudinary',
+    'crispy_forms',
 
 ]
 
@@ -135,7 +136,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Cloudinary config
 cloudinary.config(
