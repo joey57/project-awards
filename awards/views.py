@@ -29,7 +29,25 @@ def new_site(request):
     return redirect('index')
   else:
     form = NewSiteForm()
-  return render(request, 'submit_site.html', {"form":form})      
+  return render(request, 'submit_site.html', {"form":form})
+
+@login_required  
+def search(request):
+    username = request.user.username
+    profile = Profile.get_user(username)
+
+    if 'search' in request.GET and request.GET["search"]:
+        name = request.GET.get("search")
+        searched_projects = Projects.search_project(name)
+        print(searched_projects)
+        message = f"{name}"
+
+        return render(request, 'search_project.html',{"message":message,"projects": searched_projects, "username":username, "profile":profile})
+
+    else:
+        message = "You haven't searched for any term"
+        
+        return render(request, 'search_project.html',{"message":message})
 
  
 def register(request):
@@ -87,6 +105,8 @@ def create_profile(request):
   else:
     form = CreateProfileForm()
   return render(request,'user/create_profile.html',{"form":form})
+
+
 
 @login_required
 def update_profile(request,username):
