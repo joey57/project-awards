@@ -56,4 +56,15 @@ class Projects(models.Model):
 
   @classmethod
   def get_projects(cls, id):
-    return Projects.objects.get(id=id)           
+    return Projects.objects.get(id=id)  
+
+  @classmethod
+  def search_project(cls, name):
+    return cls.objects.filter(name__icontains=name)  
+
+  @classmethod
+  def user_projects(cls, username):
+    return cls.objects.filter(user__username__contains=username)
+
+  class Meta:
+    ordering=['-pub_date']             
