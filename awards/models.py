@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -27,3 +28,15 @@ class Profile(models.Model):
   def get_user(cls,username):
      profile = cls.objects.filter(user__username__icontains=username)
      return profile  
+
+class Projects(models.Model):
+  name = models.CharField(max_length=50)
+  description = models.TextField()
+  project_image = CloudinaryField('project_pics/')
+  url = models.URLField()
+  pub_date = models.DateTimeField(auto_now_add=True)
+  profile = models.ForeignKey(Profile, on_delete=CASCADE, null=True)
+  user = models.ForeignKey(User, related_name='posted_by', on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.name

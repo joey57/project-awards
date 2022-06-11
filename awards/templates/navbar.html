@@ -1,8 +1,8 @@
 {% load django_bootstrap5 %}
 {% load static %}
 
-<div id="mySidenav" class="sidenav" style="background-color: #aeebf0">
-  <a style="background-color: #aeebf0" href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+<div id="mySidenav" class="sidenav" style="background-color: #2f3636">
+  <a style="background-color: #2d3333" href="javascript:void(0)" class="closebtn" onclick="closeNav()">
   <img src="/static/photos/left-arrow.png" alt="" height="40px" width="40px"></a>
     
   {% if user.is_authenticated %}
@@ -24,14 +24,14 @@
 
 <div>
  <!-- Navigation bar -->
- <nav class="navbar navbar-expand-lg">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid" style="padding: 0">
     <div class="" id="header">
       <span class="menu" onclick="openNav()">&#9776; MENU</span>
     </div>
     <a class="nav-logo" href=" "><img class="rounded-circle" src="/static/photos/favicon.png" alt="" height="50px" width="50px"></a>
     <div class="nav-brand">
-   <h3><a href=" " style="text-decoration: none;"><span class="P">Pr</span><span class="o">oj</span><span class="e">ec</span><span class="t">t</span><span class="Hub">Awards</span></h3>
+   <h3><a href="/" style="text-decoration: none;"><span class="P">Pr</span><span class="o">oj</span><span class="e">ec</span><span class="t">t</span><span class="Hub">Awards</span></h3>
   </div>
   {% if user.is_authenticated %}
     <div class="disp">
@@ -47,7 +47,7 @@
         <li class="nav-item drop dropdown">
           <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="img-circle" src=" " alt="" width="40px" height="40px" />
+            <img class="img-circle" src="{{ profile.image.url }} " alt="" width="40px" height="40px" />
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
@@ -62,7 +62,7 @@
         <li class="nav-item drop dropdown">
           <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <button class="btn btn-outline-info" width="40px" height="40px" />Get APIs</button>
+            <button class="btn btn-outline-info" width="40px" height="40px">Get APIs</button>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
