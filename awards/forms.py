@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, Projects
 
 class UserRegisterForm(UserCreationForm):
   email = forms.EmailField()
@@ -30,4 +30,9 @@ class CreateProfileForm(forms.ModelForm):
 class UpdateProfile(forms.ModelForm):
   class Meta:
     model = Profile
-    fields = ['image', 'name', 'bio']  
+    fields = ['image', 'name', 'bio'] 
+
+class NewSiteForm(forms.ModelForm):
+  class Meta:
+    model = Projects
+    exclude = ['profile', 'user', 'pub_date', 'voters']
