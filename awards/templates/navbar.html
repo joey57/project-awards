@@ -30,20 +30,17 @@
       <span class="menu" onclick="openNav()">&#9776; MENU</span>
     </div>
     <a class="nav-logo" href=" "><img class="rounded-circle" src="/static/photos/favicon.png" alt="" height="50px" width="50px"></a>
-    <div class="nav-brand">
-   <h3><a href="/" style="text-decoration: none;"><span class="P">Pr</span><span class="o">oj</span><span class="e">ec</span><span class="t">t</span><span class="Hub">Awards</span></h3>
+    <a class="navbar-brand" href="{% url 'index' %}"> <strong class="mr-4 brand"> Awwards</strong></a>
   </div>
   {% if user.is_authenticated %}
     <div class="disp">
-      <form class="search d-flex" role="search" action=" ">
-        <input
-          class="text-center form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" />
+      <form class="form-inline" action="{% url 'search' %}" role="search">
+        <input type="text" class="form-control" name="search" placeholder="Search" aria-label="Search" />
       </form>
     </div>
 
     <div class="prof collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        
         <li class="nav-item drop dropdown">
           <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
