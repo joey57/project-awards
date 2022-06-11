@@ -7,6 +7,7 @@ urlpatterns =[
   path('', views.index, name = 'index'),
   path('update_profile/<username>',views.update_profile,name='update_profile'),
   path('create_profile/', views.create_profile, name='create_profile'),
+  path('new/site', views.new_site, name = 'new_site'),
   
 ]
 if settings.DEBUG:
