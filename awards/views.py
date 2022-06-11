@@ -4,14 +4,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UpdateProfile, CreateProfileForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile, User
+from .models import Profile, User, Projects
+import datetime as dt
 
 # Create your views here.
 
 def index(request):
- 
+  date=dt.date.today()
+  username = request.user.username
+  profile = Profile.get_user(username)
+  projects = Projects.objects.all().order_by('-pub_date')
 
-  return render(request, 'index.html', )
+  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile})
  
 def register(request):
     if request.method == 'POST':
@@ -51,9 +55,9 @@ def profile(request, username):
     Method to display a specific user profile
     '''
     profile = Profile.get_user(username)
-   
+    projects = Projects.user_projects(username)
     
-    return render(request, 'users/profile.html', {"profile": profile })
+    return render(request, 'users/profile.html', {"profile": profile, "projects":projects })
 
 @login_required
 def create_profile(request):
