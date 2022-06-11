@@ -40,3 +40,20 @@ class Projects(models.Model):
 
   def __str__(self):
     return self.name
+
+  def save_project(self):
+    self.save()
+
+  def delete_project(self):
+    self.delete() 
+
+  def voters_num(self):
+    return self.voters.count()
+
+  @classmethod
+  def get_all_projects(cls):
+    return cls.objects.all()
+
+  @classmethod
+  def get_projects(cls, id):
+    return Projects.objects.get(id=id)           
