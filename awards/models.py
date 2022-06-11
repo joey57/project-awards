@@ -35,7 +35,7 @@ class Projects(models.Model):
   project_image = CloudinaryField('project_pics/')
   url = models.URLField()
   pub_date = models.DateTimeField(auto_now_add=True)
-  profile = models.ForeignKey(Profile, on_delete=CASCADE, null=True)
+  profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
   user = models.ForeignKey(User, related_name='posted_by', on_delete=models.CASCADE)
 
   def __str__(self):
