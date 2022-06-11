@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http  import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UpdateProfile, CreateProfileForm
+from .forms import UserRegisterForm, UpdateProfile, CreateProfileForm, NewSiteForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile, User, Projects
 import datetime as dt
@@ -16,6 +16,21 @@ def index(request):
   projects = Projects.objects.all().order_by('-pub_date')
 
   return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile})
+
+@login_required
+def new_site(request):
+  current_user = request.user
+  if request.method == 'POST':
+    form = NewSiteForm(request.POST, request.FILES)
+    if form.is_valid():
+      site = form.save(commit=False)
+      site.user = current_user
+      site.save()
+    return redirect('index')
+  else:
+    form = NewSiteForm()
+  return render(request, 'submit_site.html', {"form":form})      
+
  
 def register(request):
     if request.method == 'POST':
