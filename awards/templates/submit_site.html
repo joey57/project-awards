@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %} 
+{% load static %}
+{% block content %} 
+
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="posting card col-md-4" style="color: rgb(237, 240, 241); background-color: rgb(1, 13, 24);">
+      <h4 class="text-center">Post a Project</h4>
+      <form class="pt-3 pb-3 new_post" action="{%url 'new_site'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form form%}
+        <div class="form-group text-center d-grid gap-2">
+          <input type="submit" class="btn btn-success btn-lg form-group text-center d-grid mt-5 mb-3" style="width: 100%" value="SUBMIT SITE" />
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %} 
