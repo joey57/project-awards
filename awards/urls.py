@@ -9,6 +9,7 @@ urlpatterns =[
   path('create_profile/', views.create_profile, name='create_profile'),
   path('new/site', views.new_site, name = 'new_site'),
   path('search/', views.search, name='search'),
+  path('project/<project>', views.project, name='project'),
   
 
 ]
