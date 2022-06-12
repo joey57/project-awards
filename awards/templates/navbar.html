@@ -9,7 +9,7 @@
   <a href="{% url 'index' %}" style="text-decoration: none;">Home</a>
   <a href=" {% url 'new_site' %}" style="text-decoration: none;">Post Project</a>
   <a href="{% url 'profile' username=user %}" style="text-decoration: none;">Profile</a>
-  <a href=" " style="text-decoration: none;">About Us</a>
+  
   <a class="text-muted" href="{% url 'logout' %}" style="text-decoration: none;">Logout
     <span style="margin-left: 110px"><i class="fas fa-sign-out-alt"></i></span>
   </a>
@@ -18,7 +18,7 @@
   <a href="{% url 'login' %}" style="text-decoration: none;">Login</a>
   <a href="/register" style="text-decoration: none;">Register</a>
   <a href="{% url 'new_site' %} " style="text-decoration: none;">Post Project</a>
-  <a href=" " style="text-decoration: none;">About Us</a>
+ 
   {% endif %}
 </div>
 
@@ -31,6 +31,7 @@
     </div>
     <a class="nav-logo" href=" "><img class="rounded-circle" src="/static/images/favicon.png" alt="" height="50px" width="50px"></a>
     <a class="navbar-brand" href="{% url 'index' %}"> <strong class="mr-4 brand"> Awwards </strong></a>
+
   </div>
   {% if user.is_authenticated %}
     <div class="disp">
@@ -38,9 +39,10 @@
         <input type="text" class="form-control" name="search" placeholder="Search" aria-label="Search" />
       </form>
     </div>
-
+    
     <div class="prof collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">  
+        {% for profile in profile %}
         <li class="nav-item drop dropdown">
           <a class="nav-link dropdown-toggle pinfo" href="#" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,11 +73,10 @@
             </li>
           </ul>
         </li>
-      
+        {% endfor %}
       </ul>
     </div>
     {% else %}
-    
     
     <div class="regi">
       <a class="btn btn-outline-info" href=" ">Get APIs</a>
@@ -84,7 +85,7 @@
       <a class="carta nav-item reg" style="text-decoration: none;" href=" /register">REGISTER</a>
     </div>
     <div class="site">
-      <a class="carta nav-item reg" style="text-decoration: none; background-color: #28bdd1" href= " ">POST PROJECT</a>
+      <a class="carta nav-item reg"  href= "{% url 'new_site' %}">Post Project</a>
     </div>
     {% endif %}
     

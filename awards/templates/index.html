@@ -5,12 +5,11 @@
 
  <section>
   <a href="">
-    <div class="landing container-fluid p-0 txt-lightgrey">
-      <div id="landing-img" class="d-flex align-items-start">
-        <a href="{{rating.project.url}}">
-          <img class="w-100 d-flex align-self-center" src="{{rating.project.project_image.url}}" alt="" />
-        </a>
-      </div>
+    <div class="landing container-fluid txt-lightgrey" style="width: 100%;">
+     <div id="landing-img" class="d-flex align-items-start">
+      <a href="{{highest_rated_site.project.url}}"> <img class="W-100 d-flex " src="/static/images/background.png" alt="" />
+      </a>
+    </div>
       <div class="absolute-fade landing-abs-fade light-fade"></div>
       <div class="rgba-overlay" id="landing-overlay">
         <div class="container m-5 mx-auto py-3">
@@ -22,21 +21,21 @@
             </div>
           </div>
           <div class="text-center pt-4 mt-2">
-            <a style="text-decoration: none" href="{{rating.project.url}}" target="_blank">
+            <a style="text-decoration: none" href="{{highest_rated_site.project.url}}" target="_blank">
               <h1 class="mb-0 f-45 text-white site-title">
-                {{rating.project.name}}
+                {{highest_rated_site.project.name}}
               </h1>
             </a>
           </div>
           <div class="text-center p-1">
             <p class="text-white-50 mb-0 text-uppercase">
               <span style="color: white; text-decoration: none">BY</span>
-              <a href="/profile/{{rating.project.user.username}}"
-                class="name nav-link d-inline-flex px-1">{{rating.project.user.username}}</a>
+              <a href="/profile/{{highest_rated_site.project.user.username}}"
+                class="name nav-link d-inline-flex px-1">{{highest_rated_site.project.user.username}}</a>
               FROM
-          
+              <span class="text-white">{{highest_rated_site.project.user.profile.country}}</span>
               WITH
-              <span class="text-white">{{rating.avg_rating}}</span>
+              <span class="text-white">{{highest_rated_site.avg_rating}}</span>
             </p>
           </div>
 
@@ -44,7 +43,7 @@
             <div class="mx-2 ratings">
               <div class="border border-warning text-center d-flex align-items-center justify-content-center">
                 <div class="text-white">
-                  <span class="dec font-weight-bold">{{rating.design}}</span>
+                  <span class="{{rating.design_average}}}">{{rating.design_average}}</span>
                 </div>
               </div>
               <div class="p-2 text-center">
@@ -55,7 +54,7 @@
             <div class="mx-2 ratings">
               <div class="border border-success text-center d-flex align-items-center justify-content-center">
                 <div class="text-white">
-                  <span class="dec font-weight-bold">{{rating.usability}}</span>
+                  <span class="dec font-weight-bold">{{rating.usability_average}}</span>
                 </div>
               </div>
               <div class="p-2 text-center">
@@ -66,7 +65,7 @@
              <div class="mx-2 ratings">
               <div class="border border-info text-center d-flex align-items-center justify-content-center">
                 <div class="text-white">
-                  <span class="dec font-weight-bold">{{rating.content}}</span>
+                  <span class="font-weight-bold">{{rating.content_average}}</span>
                 </div>
               </div>
               <div class="p-2 text-center">
@@ -77,7 +76,7 @@
 
           <div class="d-flex my-4">
             <div class="mr-auto">
-              <a href="{{rating.project.url}}" target="_blank"
+              <a href="{{highest_rated_site.project.url}}" target="_blank"
                 class="btn btn-sm badge-pill px-4 btn-outline-info">Visit Live Site</a>
             </div>
           </div>
@@ -88,6 +87,7 @@
   </a>
 </section>
 
+ 
  
  <main>
   <div class="container">
@@ -101,12 +101,10 @@
         <div class="card mt-5 p-3 mb-5"  style="background-color: rgb(144, 153, 158);">
           <div class="cardbody">
             <div class="author mb-3">
-              <img src="{{project.user.profile.image.url}}" class="rounded-circle" alt="user"
-                style="height: 2em; width: 2em" />
+              <img src="{{project.user.profile.image.url}}" class="rounded-circle" alt="user" style="height: 2em; width: 2em" />
 
-              <span style="margin-left: 10px"><a class="puserp"
-                  href="/profile/{{project.user.username}}">{{project.user}}</a>
-              </span>
+              <strong style="margin-left: 10px"><a class="userp" href="/profile/{{project.user.username}}">{{project.user}}</a>
+              </strong>
             </div>
           </div>
           <div class="card__image">

@@ -6,6 +6,8 @@ from .forms import UserRegisterForm, UpdateProfile, CreateProfileForm, NewSiteFo
 from django.contrib.auth.decorators import login_required
 from .models import Profile, User, Projects, Rating
 import datetime as dt
+from django.db.models import F
+import random
 
 # Create your views here.
 
@@ -14,8 +16,9 @@ def index(request):
   username = request.user.username
   profile = Profile.get_user(username)
   projects = Projects.objects.all().order_by('-pub_date')
+  highest_rated_site = Rating.objects.order_by().annotate(avg_rating=(F('design')+ F('usability') +F('content'))/3).order_by('-avg_rating')[0]
 
-  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile})
+  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, "highest_rated_site":highest_rated_site})
 
 @login_required
 def new_site(request):
