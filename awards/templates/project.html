@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+
 {% include 'navbar.html' %}
+
 <div class="container" style="margin-top:8%">
   <h5 class="mb-4 mt-4">{{ project.name }} by {{ project.user.username }}</h5>
 
@@ -15,7 +17,6 @@
          <div class="row">
            <div class="col-md-3"></div>
              <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
-              <br><br><br>
               {% for rating in project.ratings.all %}
               {% if forloop.counter is project.ratings.all.count %}
               <br><br><br>
@@ -45,7 +46,7 @@
   </p>
   <p>{{ project.description }}</p>
   <hr>
-  <p class="card-img"><img src="{{project.user.profile.image.url}}" class="nav-img mr-2" alt="">By {{project.user.username|title}} <span style="float:right">{{project.pub_date|date}}</span>
+  <p class="card-img"><img width="100px" height="100px" src="{{project.user.profile.image.url}}" class="nav-img mr-2" alt="">By {{project.user.username|title}} <span style="float:right">{{project.pub_date|date}}</span>
   </p>
   <div class="row">
     <div class="col-md-2"></div>
