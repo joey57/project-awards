@@ -8,103 +8,89 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <div class="container-fluid" style="margin-top:5%;">
-  <div class="container-fluid">
-      <!DOCTYPE html>
-      <html class="no-js" lang="en">
-      <body class="home" data-debug="0">
+ <div class="container-fluid">
+  <!DOCTYPE html>
+    <html class="no-js" lang="en">
+    <body class="home" data-debug="0">
 
-      <section id="content">
-          <div class="content-view">
-              <div class="box-site-head js-single-element"
-                   data-model="">
-                  <div class="box-bg has-tablet">
-                      <a href="{% url 'project' random_project.name %}">
-                          <img src="/static/images/background.png"
-                               width="1900" height="720" class="lazy"/>
-                      </a>
-                  </div>
-                  <div class="box-content over mi" style="background-image:url()">
-                      <a href="{% url 'project' random_project.name %}" class="site-link" aria-label=""></a>
-                      <div class="inner vertical-center">
-                          <div class="box-info">
-                              <div class="row mx-auto D-block">
-                                  <h2 class="heading-large"><a href="{% url 'project' random_project.name %}"
-                                                               style="margin-top:-100px;">{{ random_project.name }}</a>
-                                  </h2>
-                              </div>
-                              <div class="row mx-auto D-block">
-                                  <div class="by ">
-                                      by <strong><a href="">{{ random_project.user.username }}</a>
-                                  </strong>
-                                  </div>
-                              </div>
-                              <div class="box-notesite js-notes">
- 
-                                <ul>
-                                  {% for rating in random_project.ratings.all %}
-                                  {% if forloop.counter is random_project.ratings.all.count %}
-                                  <li class="circle-note-progress style-design" data-note="">
-                                      <div class="circle">
-                                          <div class="des">
-                                              <p class="d-block mx-auto textrate">{{rating.design_average}}</p>
-                                          </div>
-                                      </div>
-                                      <div class="legend">DESIGN</div>
-                                  </li>
-                                  <li class="circle-note-progress style-usability"
-                                      data-note="{{rating.usability_average}}">
-                                      <div class="circle">
-                                          <div class="des1">
-                                              <p class="d-block mx-auto textrate">{{rating.usability_average}}</p>
-                                          </div>
-                                      </div>
-                                      <div class="legend">USABILITY</div>
-                                  </li>
-                                  <li class="circle-note-progress style-creativity"
-                                      data-note="{{rating.content_average}}">
-                                      <div class="circle">
-                                           <div class="des2">
-                                              <p class="d-block mx-auto textrate">{{rating.content_average}}</p>
-                                          </div>
-                                      </div>
-                                      <div class="legend">CONTENT</div>
-                                  </li>
-                                  <li class="circle-note-progress style-content" data-note="{{ rating.score }}">
-                                      <div class="circle">
-                                           <div class="des3">
-                                              <p class="d-block mx-auto textrate">{{rating.score}}</p>
-                                          </div>
-                                      </div>
-                                      <div class="legend">SCORE</div>
-                                  </li>
-                                  {% endif %}
-                                  {% endfor %}
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="box-breadcrumb">
-                          <div class="box-left">
-                              <strong class="parent">
-                                  <a href="{% url 'project' random_project.name %}">Trending Site</a>
-                              </strong>
-                              <span class="text-x-thin">{{random_project.date|date}}</span>
-                          </div>
-                      </div>
-                      <div class="box-bl">
-                          <a href="{{random_project.url}}" data-identifier="" data-type="submission"
-                             class="js-visit-item bt-default green-fill" target="_blank" rel="noopener nofollow"
-                             style="margin-top:-60px;">Visit
-                              Site</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    <section id="content">
+     <div class="content-view">
+      <div class="box-site-head js-single-element"data-model="">
+       <div class="box-bg has-tablet">
+        <a href="{% url 'project' random_project.name %}">
+          <img src="/static/images/background.png" width="1900" height="720" class="lazy"/>
+        </a>
+       </div>
+      <div class="box-content over mi" style="background-image:url()">
+       <a href="{% url 'project' random_project.name %}" class="site-link" aria-label=""></a>
+      <div class="inner vertical-center">
+        <div class="box-info">
+          <div class="row mx-auto D-block">
+            <h2 class="heading-large"><a href="{% url 'project' random_project.name %}" style="margin-top:-100px;">{{ random_project.name }}</a>
+            </h2>
+           </div>
+        <div class="row mx-auto D-block">
+         <div class="by "> by <strong><a href="">{{ random_project.user.username }}</a></strong>
+        </div>
       </div>
-  </section>   
+    <div class="box-notesite js-notes">
+     <ul>
+     {% for rating in random_project.ratings.all %}
+     {% if forloop.counter is random_project.ratings.all.count %}
+    <li class="circle-note-progress style-design" data-note="">
+      <div class="circle">
+        <div class="des">
+         <p class="d-block mx-auto textrate">{{rating.design_average}}</p>
+        </div>
+      </div>
+    <div class="legend">DESIGN</div>
+   </li>
+    <li class="circle-note-progress style-usability" data-note="{{rating.usability_average}}">
+      <div class="circle">
+       <div class="des1">
+        <p class="d-block mx-auto textrate">{{rating.usability_average}}</p>
+       </div>
+      </div>
+     <div class="legend">USABILITY</div>
+    </li>
+    <li class="circle-note-progress style-creativity" data-note="{{rating.content_average}}">
+    <div class="circle">
+      <div class="des2">
+       <p class="d-block mx-auto textrate">{{rating.content_average}}</p>
+      </div>
+    </div>
+    <div class="legend">CONTENT</div>
+    </li>
+    <li class="circle-note-progress style-content" data-note="{{ rating.score }}">
+    <div class="circle">
+     <div class="des3">
+      <p class="d-block mx-auto textrate">{{rating.score}}</p>
+     </div>
+   </div>
+   <div class="legend">SCORE</div>
+   </li>
+  {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+</div>
+  <div class="box-breadcrumb">
+    <div class="box-left">
+      <strong class="parent">
+        <a href="{% url 'project' random_project.name %}">Trending Site</a>
+      </strong>
+      <span class="text-x-thin">{{random_project.date|date}}</span>
+    </div>
+  </div>
+  <div class="box-bl">
+  <a href="{{random_project.url}}" data-identifier="" data-type="submission" class="js-visit-item bt-default green-fill" target="_blank" rel="noopener nofollow" style="margin-top:-60px;">Visit Site</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>   
 
-
- 
- 
  <main>
   <div class="container">
     <div class="text-center mt-5 mb-4">

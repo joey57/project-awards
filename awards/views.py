@@ -28,17 +28,15 @@ def index(request):
       project.user = request.user
       project.save()
   else:
-        form = NewSiteForm()
+    form = NewSiteForm()
 
   try:
-        projects = Projects.objects.all()
-        projects = projects[::-1]
-        a_project = random.randint(0, len(projects)-1)
-        random_project = projects[a_project]
-      
+    projects = Projects.objects.all()
+    projects = projects[::-1]
+    a_project = random.randint(0, len(projects)-1)
+    random_project = projects[a_project]
   except:
-        projects = None
-
+    projects = None   
   return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, 'form': form,'random_project': random_project})
 
 @login_required
