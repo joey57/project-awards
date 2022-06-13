@@ -7,86 +7,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
+<div class="container-fluid" style="margin-top:5%;">
+  <div class="container-fluid">
+      <!DOCTYPE html>
+      <html class="no-js" lang="en">
+      <body class="home" data-debug="0">
+
+      <section id="content">
+          <div class="content-view">
+              <div class="box-site-head js-single-element"
+                   data-model="">
+                  <div class="box-bg has-tablet">
+                      <a href="{% url 'project' random_project.name %}">
+                          <img src="/static/images/background.png"
+                               width="1900" height="720" class="lazy"/>
+                      </a>
+                  </div>
+                  <div class="box-content over mi" style="background-image:url()">
+                      <a href="{% url 'project' random_project.name %}" class="site-link" aria-label=""></a>
+                      <div class="inner vertical-center">
+                          <div class="box-info">
+                              <div class="row mx-auto D-block">
+                                  <h2 class="heading-large"><a href="{% url 'project' random_project.name %}"
+                                                               style="margin-top:-100px;">{{ random_project.name }}</a>
+                                  </h2>
+                              </div>
+                              <div class="row mx-auto D-block">
+                                  <div class="by ">
+                                      by <strong><a href="">{{ random_project.user.username }}</a>
+                                  </strong>
+                                  </div>
+                              </div>
+                              <div class="box-notesite js-notes">
  
-    <div class="container-fluid " style="margin-top: 5%;">
-     <div id="landing-img" class="container-fluid">
-      <a href="{{highest_rated_site.project.url}}"> <img class="container-fluid" width="1900" height="620" src="/static/images/background.png" alt="" />
-      </a>
-    </div>
-      <div class="absolute-fade landing-abs-fade light-fade"></div>
-      <div class="rgba-overlay" id="landing-overlay" >
-        <div class="container m-5 mx-auto py-3">
-          <div class="d-flex align-items-center">
-            <div class="d-flex mr-auto letter-space-1">
-              <span class="text-black" style="font-size: 15px">Top Ranked Project as on:</span> <br>
-              <span style="padding-left: 5px; font-size: 14px; color: blue; background-color: brown;" class="ml-3 text-white-50">
-                {{date}}</span>
-            </div>
+                                <ul>
+                                  {% for rating in random_project.ratings.all %}
+                                  {% if forloop.counter is random_project.ratings.all.count %}
+                                  <li class="circle-note-progress style-design" data-note="">
+                                      <div class="circle">
+                                          <div class="des">
+                                              <p class="d-block mx-auto textrate">{{rating.design_average}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="legend">DESIGN</div>
+                                  </li>
+                                  <li class="circle-note-progress style-usability"
+                                      data-note="{{rating.usability_average}}">
+                                      <div class="circle">
+                                          <div class="des1">
+                                              <p class="d-block mx-auto textrate">{{rating.usability_average}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="legend">USABILITY</div>
+                                  </li>
+                                  <li class="circle-note-progress style-creativity"
+                                      data-note="{{rating.content_average}}">
+                                      <div class="circle">
+                                           <div class="des2">
+                                              <p class="d-block mx-auto textrate">{{rating.content_average}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="legend">CONTENT</div>
+                                  </li>
+                                  <li class="circle-note-progress style-content" data-note="{{ rating.score }}">
+                                      <div class="circle">
+                                           <div class="des3">
+                                              <p class="d-block mx-auto textrate">{{rating.score}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="legend">SCORE</div>
+                                  </li>
+                                  {% endif %}
+                                  {% endfor %}
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="box-breadcrumb">
+                          <div class="box-left">
+                              <strong class="parent">
+                                  <a href="{% url 'project' random_project.name %}">Trending Site</a>
+                              </strong>
+                              <span class="text-x-thin">{{random_project.date|date}}</span>
+                          </div>
+                      </div>
+                      <div class="box-bl">
+                          <a href="{{random_project.url}}" data-identifier="" data-type="submission"
+                             class="js-visit-item bt-default green-fill" target="_blank" rel="noopener nofollow"
+                             style="margin-top:-60px;">Visit
+                              Site</a>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="text-center pt-4 mt-2">
-            <a style="text-decoration: none" href="{{highest_rated_site.project.url}}" target="_blank">
-              <h1 class="mb-0 f-45 text-white site-title">
-                {{highest_rated_site.project.name}}
-              </h1>
-            </a>
-          </div>
-          <div class="text-center p-1">
-            <p class="text-white-50 mb-0 text-uppercase">
-              <span style="color: white; text-decoration: none">BY</span>
-              <a href="/profile/{{highest_rated_site.project.user.username}}"
-                class="name nav-link d-inline-flex px-1">{{highest_rated_site.project.user.username}}</a>
-              FROM
-              <span class="text-white">{{highest_rated_site.project.user.profile.country}}</span>
-              WITH
-              <span class="text-white">{{highest_rated_site.avg_rating}}</span>
-            </p>
-          </div>
-
-          <div class="hide d-flex justify-content-center mt-3 mb-5">
-            <div class="mx-2 ratings">
-              <div class="border border-warning text-center d-flex align-items-center justify-content-center">
-                <div class="text-white">
-                  <span class="{{rating.design_average}}}">{{rating.design_average}}</span>
-                </div>
-              </div>
-              <div class="p-2 text-center">
-                <h5 class="wrld f-12">DESIGN</h5>
-              </div>
-            </div>
-
-            <div class="circle">
-              <div class="border border-success text-center d-flex align-items-center justify-content-center">
-                <div class="text-white">
-                  <span class="dec font-weight-bold">{{rating.usability_average}}</span>
-                </div>
-              </div>
-              <div class="p-2 text-center">
-                <h5 class="wrld f-12">USABILITY</h5>
-              </div>
-            </div>
-
-             <div class="mx-2 ratings">
-              <div class="border border-info text-center d-flex align-items-center justify-content-center">
-                <div class="text-white">
-                  <span class="font-weight-bold">{{rating.content_average}}</span>
-                </div>
-              </div>
-              <div class="p-2 text-center">
-                <h5 class="wrld f-12">CONTENT</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex my-4">
-            <div class="mr-auto">
-              <a href="{{highest_rated_site.project.url}}" target="_blank"
-                class="btn btn-sm badge-pill px-4 btn-outline-dark">Visit Live Site</a>
-            </div>
-          </div>
-
-        </div>
       </div>
-    </div>
+  </section>   
 
 
  

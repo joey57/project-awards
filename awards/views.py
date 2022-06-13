@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from .serializers import ProfileSerializer, ProjectsSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
+import random
 
 # Create your views here.
 
@@ -20,9 +21,25 @@ def index(request):
   username = request.user.username
   profile = Profile.get_user(username)
   projects = Projects.objects.all().order_by('-pub_date')
-  highest_rated_site = Rating.objects.order_by().annotate(avg_rating=(F('design')+ F('usability') +F('content'))/3).order_by('-avg_rating')[0]
+  if request.method == "POST":
+    form = NewSiteForm(request.POST)
+    if form.is_valid():
+      post = form.save(commit=False)
+      post.user = request.user
+      post.save()
+  else:
+        form = NewSiteForm()
 
-  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, "highest_rated_site":highest_rated_site})
+  try:
+        projects = Projects.objects.all()
+        projects = projects[::-1]
+        a_project = random.randint(0, len(projects)-1)
+        random_project = projects[a_project]
+      
+  except:
+        projects = None
+
+  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, 'random_project': random_project})
 
 @login_required
 def new_site(request):
