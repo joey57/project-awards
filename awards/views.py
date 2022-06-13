@@ -24,9 +24,9 @@ def index(request):
   if request.method == "POST":
     form = NewSiteForm(request.POST)
     if form.is_valid():
-      post = form.save(commit=False)
-      post.user = request.user
-      post.save()
+      project = form.save(commit=False)
+      project.user = request.user
+      project.save()
   else:
         form = NewSiteForm()
 
@@ -39,7 +39,7 @@ def index(request):
   except:
         projects = None
 
-  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, 'random_project': random_project})
+  return render(request, 'index.html',{"date":date, "projects":projects, "profile": profile, 'form': form,'random_project': random_project})
 
 @login_required
 def new_site(request):
