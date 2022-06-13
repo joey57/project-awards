@@ -1,9 +1,16 @@
 # project-awards
 
 ## Description
+This os a django application the allows users to post their projects that they did and have them reviewed by other perople from a scale of one to ten. They are rated based on design usability and content of their project.
 
 
 ## User Stories
+- user can register or sign up to the application
+- view posted projects and their details.
+- rate other user's projects.
+- user can serach for projects.
+- view their posted projects.
+- view overall score of projects
 
 
 ## Live site
@@ -41,7 +48,6 @@ Create .env file and add the following filling where appropriate:
     Open terminal on localhost:8000
 
 ## Known Bugs
-The user is unable to like a post.
 
 ## Contact Information
 If you have any questions feel free to contact me.
