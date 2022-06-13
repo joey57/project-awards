@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile, User, Projects, Rating
 import datetime as dt
 from django.db.models import F
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import ProfileSerializer, ProjectsSerializer
 
 # Create your views here.
 
@@ -171,6 +174,19 @@ def project(request, project):
 
     }
   return render(request, 'project.html', params)
+
+class ProfileList(APIView):
+  def get(self, request, format=None):
+    profiles = Profile.objects.all()
+    serializers = ProfileSerializer(profiles, many=True)
+    return Response(serializers.data) 
+
+class ProjecsList(APIView):
+  def get(self, request, format=None):
+    projects = Projects.objects.all()
+    serializers = ProjectsSerializer(projects, many=True)
+    return Response(serializers.data)
+
     
 
 
