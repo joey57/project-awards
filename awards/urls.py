@@ -13,6 +13,8 @@ urlpatterns =[
 
   path('api/profiles/', views.ProfileList.as_view()),
   path('api/projects/', views.ProjecsList.as_view()),
+  re_path(r'api/profile/profile-id/(?P<pk>[0-9]+)/$', views.ProfileDescription.as_view()),
+  re_path(r'api/project/project-id/(?P<pk>[0-9]+)/$', views.ProjectDescription.as_view()),
   
 
 ]
