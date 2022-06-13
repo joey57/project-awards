@@ -1,7 +1,7 @@
 # project-awards
 
 ## Description
-This os a django application the allows users to post their projects that they did and have them reviewed by other perople from a scale of one to ten. They are rated based on design usability and content of their project.
+This is a django application the allows users to post their projects that they did and have them reviewed by other perople from a scale of one to ten. They are rated based on design usability and content of their project.
 
 
 ## User Stories
