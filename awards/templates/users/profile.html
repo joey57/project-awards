@@ -2,13 +2,14 @@
 {% load static %} 
 {% block content %}
 {% include 'navbar.html' %}
+<div class="row mt-5"><br><br></div>
 <header class="mb-5">
   {% for profile in profile %}
   <div class="container-fluid cont">
     <!-- Displaying user profile   -->
     <div class="card profile" style="background-color: #aeb3b8; width: 40rem;">
       <div class="bio-profile-image">
-        <a href="">
+        <a href=" ">
           <img class="card-img profile_img" src="{{ profile.image.url }}" alt="{{ user.username }}" />
         </a>
       </div>
