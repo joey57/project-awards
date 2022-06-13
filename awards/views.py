@@ -10,6 +10,7 @@ from django.db.models import F
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProfileSerializer, ProjectsSerializer
+from rest_framework import status
 
 # Create your views here.
 
@@ -179,13 +180,28 @@ class ProfileList(APIView):
   def get(self, request, format=None):
     profiles = Profile.objects.all()
     serializers = ProfileSerializer(profiles, many=True)
-    return Response(serializers.data) 
+    return Response(serializers.data)
 
+  def post(self, request, format=None):
+    serializers = ProfileSerializer(data=request.data)
+    if serializers.is_valid():
+      serializers.save()
+      return Response(serializers.data, status=status.HTTP_201_CREATED)
+    return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+   
 class ProjecsList(APIView):
   def get(self, request, format=None):
     projects = Projects.objects.all()
     serializers = ProjectsSerializer(projects, many=True)
     return Response(serializers.data)
+
+  def post(self, request, format=None):
+    serializers = ProjectsSerializer(data=request.data)
+    if serializers.is_valid():
+      serializers.save()
+      return Response(serializers.data, status=status.HTTP_201_CREATED)
+    return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)    
 
     
 
