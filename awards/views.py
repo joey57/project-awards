@@ -21,6 +21,7 @@ def index(request):
   username = request.user.username
   profile = Profile.get_user(username)
   projects = Projects.objects.all().order_by('-pub_date')
+  random_project = ''
   if request.method == "POST":
     form = NewSiteForm(request.POST)
     if form.is_valid():
