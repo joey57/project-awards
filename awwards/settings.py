@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'cloudinary',
     'crispy_forms',
+    'rest_framework',
 
 ]
 
