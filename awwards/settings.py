@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
 
 ]
 
@@ -112,6 +113,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
