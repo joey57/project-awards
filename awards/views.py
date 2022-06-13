@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile, User, Projects, Rating
 import datetime as dt
 from django.db.models import F
-import random
 
 # Create your views here.
 
