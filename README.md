@@ -14,6 +14,7 @@ This is a django application the allows users to post their projects that they d
 
 
 ## Live site
+(https://pawards.herokuapp.com/)
 
 
 ## Technologies used
